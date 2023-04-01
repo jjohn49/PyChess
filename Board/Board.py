@@ -1,0 +1,78 @@
+from Board.Square import Square
+from Pieces import Pawn, Bishop, Knight, King, Queen, Rook
+
+
+class Board:
+    #Starting Board
+     def __init__(self):
+         self.a1 = Square(Rook(1,1,"white"), "black")
+         self.b1 = Square(Knight(2, 1, "white"), "white")
+         self.c1 = Square(Bishop(3, 1, "white"), "black")
+         self.d1 = Square(Queen(4, 1, "white"), "white")
+         self.e1 = Square(King(5, 1, "white"), "black")
+         self.f1 = Square(Bishop(6, 1, "white"), "white")
+         self.g1 = Square(Knight(7, 1, "white"), "black")
+         self.h1 = Square(Rook(8, 1, "white"), "white")
+
+         self.a2 = Square(Pawn(1, 2, "white"), "black")
+         self.b2 = Square(Pawn(2, 2, "white"), "white")
+         self.c2 = Square(Pawn(3, 2, "white"), "black")
+         self.d2 = Square(Pawn(4, 2, "white"), "white")
+         self.e2 = Square(Pawn(5, 2, "white"), "black")
+         self.f2 = Square(Pawn(6, 2, "white"), "white")
+         self.g2 = Square(Pawn(7, 2, "white"), "black")
+         self.h2 = Square(Pawn(8, 2, "white"), "white")
+
+         self.a3 = Square(None, "black")
+         self.b3 = Square(None, "white")
+         self.c3 = Square(None, "black")
+         self.d3 = Square(None, "white")
+         self.e3 = Square(None, "black")
+         self.f3 = Square(None, "white")
+         self.g3 = Square(None, "black")
+         self.h3 = Square(None, "white")
+
+         self.a4 = Square(None, "black")
+         self.b4 = Square(None, "white")
+         self.c4 = Square(None, "black")
+         self.d4 = Square(None, "white")
+         self.e4 = Square(None, "black")
+         self.f4 = Square(None, "white")
+         self.g4 = Square(None, "black")
+         self.h4 = Square(None, "white")
+
+         self.a5 = Square(None, "black")
+         self.b5 = Square(None, "white")
+         self.c5 = Square(None, "black")
+         self.d5 = Square(None, "white")
+         self.e5 = Square(None, "black")
+         self.f5 = Square(None, "white")
+         self.g5 = Square(None, "black")
+         self.h5 = Square(None, "white")
+
+         self.a6 = Square(None, "black")
+         self.b6 = Square(None, "white")
+         self.c6 = Square(None, "black")
+         self.d6 = Square(None, "white")
+         self.e6 = Square(None, "black")
+         self.f6 = Square(None, "white")
+         self.g6 = Square(None, "black")
+         self.h6 = Square(None, "white")
+
+         self.a7 = Square(Pawn(1, 7, "black"), "black")
+         self.b7 = Square(Pawn(2, 7, "black"), "white")
+         self.c7 = Square(Pawn(3, 7, "black"), "black")
+         self.d7 = Square(Pawn(4, 7, "black"), "white")
+         self.e7 = Square(Pawn(5, 7, "black"), "black")
+         self.f7 = Square(Pawn(6, 7, "black"), "white")
+         self.g7 = Square(Pawn(7, 7, "black"), "black")
+         self.h7 = Square(Pawn(8, 7, "black"), "white")
+
+         self.a8 = Square(Rook(1, 8, "black"), "black")
+         self.b8 = Square(Knight(2, 8, "black"), "white")
+         self.c8 = Square(Bishop(3, 8, "black"), "black")
+         self.d8 = Square(Queen(4, 8, "black"), "white")
+         self.e8 = Square(King(5, 8, "black"), "black")
+         self.f8 = Square(Bishop(6, 8, "black"), "white")
+         self.g8 = Square(Knight(7, 8, "black"), "black")
+         self.h8 = Square(Rook(8, 8, "black"), "white")
