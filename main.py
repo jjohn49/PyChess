@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import pygame
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+pygame.init()
+screen = pygame.display.set_mode([500, 500])
 
+# Define constants for the screen width and height
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Create the screen object
+# The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
