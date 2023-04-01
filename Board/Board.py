@@ -1,5 +1,10 @@
 from Board.Square import Square
-from Pieces import Pawn, Bishop, Knight, King, Queen, Rook
+from Pieces.Bishop import Bishop
+from Pieces.Pawn import Pawn
+from Pieces.King import King
+from Pieces.Queen import Queen
+from Pieces.Rook import Rook
+from Pieces.Knight import Knight
 
 
 class Board:
@@ -86,6 +91,9 @@ class Board:
                  "f": Square(Bishop(6, 1, "black"), "black"),
                  "g": Square(Knight(7, 1, "black"), "white"),
                  "h": Square(Rook(8, 1, "black"), "black"),
-             }
-
+             },
          }
+
+     def getBoard(self):
+        return self.board
+
