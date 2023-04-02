@@ -5,7 +5,7 @@ from Pieces.King import King
 from Pieces.Queen import Queen
 from Pieces.Rook import Rook
 from Pieces.Knight import Knight
-
+import pygame
 
 class Board:
     #Starting Board
@@ -96,4 +96,24 @@ class Board:
 
      def getBoard(self):
         return self.board
+
+     def drawBoard(self, screen):
+         # Define constants for the screen width and height
+         SCREEN_WIDTH = 800
+         SCREEN_HEIGHT = 800
+
+         SQUARE_SIZE = 100
+
+         WHITE = (255, 230, 153)
+         BLACK = (128, 64, 0)
+
+
+         x = 0
+         y = 0
+         screen.fill(WHITE)
+
+         for row in range(8):
+            for col in range(row % 2, 8, 2):
+                 pygame.draw.rect(screen, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+            pygame.display.flip()
 
