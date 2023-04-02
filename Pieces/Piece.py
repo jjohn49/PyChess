@@ -9,3 +9,12 @@ class Piece:
 
     def getPosition(self):
         return self.x, self.y
+
+    def move(self, x, y):
+        self.x = x
+        self.y = y
+    def getName(self):
+        return self.name
+
+    def getColor(self):
+        return self.color
