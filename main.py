@@ -16,4 +16,4 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 board.drawBoard(screen)
 
 while True:
-    x = 1
+    pygame.display.flip()

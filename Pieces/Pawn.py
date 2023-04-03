@@ -6,5 +6,5 @@ class Pawn(Piece):
         Piece.__init__(self=self, name="pawn", x=x , y=y, color=color )
 
     def getMoves(self, board):
-        #code to check if it can move 1, 2, take, enpassant, or can't move
-        return 0
+        if(self.y == 2 and (board[self.y][chr(ord(self.x) + 1)]  == None) and (board[self.y][chr(ord(self.x) + 2)]  == None)):
+            return []

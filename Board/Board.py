@@ -13,24 +13,24 @@ class Board:
 
         self.board = {
             1:{
-                "a": Square(Rook(1, 1, "white"), "black"),
-                "b": Square(Knight(2, 1, "white"), "white"),
-                "c": Square(Bishop(3, 1, "white"), "black"),
-                "d": Square(Queen(4, 1, "white"), "white"),
-                "e": Square(King(5, 1, "white"), "black"),
-                "f": Square(Bishop(6, 1, "white"), "white"),
-                "g": Square(Knight(7, 1, "white"), "black"),
-                "h": Square(Rook(8, 1, "white"), "white"),
+                "a": Square(Rook('a', 1, "white"), "black"),
+                "b": Square(Knight('b', 1, "white"), "white"),
+                "c": Square(Bishop('c', 1, "white"), "black"),
+                "d": Square(Queen('d', 1, "white"), "white"),
+                "e": Square(King('e', 1, "white"), "black"),
+                "f": Square(Bishop('f', 1, "white"), "white"),
+                "g": Square(Knight('g', 1, "white"), "black"),
+                "h": Square(Rook('h', 1, "white"), "white"),
             },
             2:{
-                "a": Square(Pawn(1, 2, "white"), "white"),
-                "b": Square(Pawn(2, 2, "white"), "black"),
-                "c": Square(Pawn(3, 2, "white"), "white"),
-                "d": Square(Pawn(4, 2, "white"), "black"),
-                "e": Square(Pawn(5, 2, "white"), "white"),
-                "f": Square(Pawn(6, 2, "white"), "black"),
-                "g": Square(Pawn(7, 2, "white"), "white"),
-                "h": Square(Pawn(8, 2, "white"), "black"),
+                "a": Square(Pawn('a', 2, "white"), "white"),
+                "b": Square(Pawn('b', 2, "white"), "black"),
+                "c": Square(Pawn('c', 2, "white"), "white"),
+                "d": Square(Pawn('d', 2, "white"), "black"),
+                "e": Square(Pawn('e', 2, "white"), "white"),
+                "f": Square(Pawn('f', 2, "white"), "black"),
+                "g": Square(Pawn('g', 2, "white"), "white"),
+                "h": Square(Pawn('h', 2, "white"), "black"),
             },
             3:{
                 "a": Square(None, "black"),
@@ -73,24 +73,24 @@ class Board:
                 "h": Square(None, "black"),
             },
             7:{
-                "a": Square(Pawn(1, 2, "black"), "black"),
-                "b": Square(Pawn(2, 2, "black"), "white"),
-                "c": Square(Pawn(3, 2, "black"), "black"),
-                "d": Square(Pawn(4, 2, "black"), "white"),
-                "e": Square(Pawn(5, 2, "black"), "black"),
-                "f": Square(Pawn(6, 2, "black"), "white"),
-                "g": Square(Pawn(7, 2, "black"), "black"),
-                "h": Square(Pawn(8, 2, "black"), "white"),
+                "a": Square(Pawn('a', 7, "black"), "black"),
+                "b": Square(Pawn('b', 7, "black"), "white"),
+                "c": Square(Pawn('c', 7, "black"), "black"),
+                "d": Square(Pawn('d', 7, "black"), "white"),
+                "e": Square(Pawn('e', 7, "black"), "black"),
+                "f": Square(Pawn('f', 7, "black"), "white"),
+                "g": Square(Pawn('g', 7, "black"), "black"),
+                "h": Square(Pawn('h', 7, "black"), "white"),
             },
             8:{
-                "a": Square(Rook(1, 1, "black"), "white"),
-                "b": Square(Knight(2, 1, "black"), "black"),
-                "c": Square(Bishop(3, 1, "black"), "white"),
-                "d": Square(Queen(4, 1, "black"), "black"),
-                "e": Square(King(5, 1, "black"), "white"),
-                "f": Square(Bishop(6, 1, "black"), "black"),
-                "g": Square(Knight(7, 1, "black"), "white"),
-                "h": Square(Rook(8, 1, "black"), "black"),
+                "a": Square(Rook('a', 8, "black"), "white"),
+                "b": Square(Knight('b', 8, "black"), "black"),
+                "c": Square(Bishop('c', 8, "black"), "white"),
+                "d": Square(Queen('d', 8, "black"), "black"),
+                "e": Square(King('e', 8, "black"), "white"),
+                "f": Square(Bishop('f', 8, "black"), "black"),
+                "g": Square(Knight('g', 8, "black"), "white"),
+                "h": Square(Rook('h', 8, "black"), "black"),
             },
         }
 
@@ -110,10 +110,11 @@ class Board:
         wQueen = pygame.image.load('Pieces/PieceImages/White-Queen.png')
         bQueen = pygame.image.load('Pieces/PieceImages/Black-Queen.png')
 
-        wKinght = pygame.image.load('Pieces/PieceImages/White-Knight.png')
-        bKinght = pygame.image.load('Pieces/PieceImages/Black-Knight.png')
+        wKnight = pygame.image.load('Pieces/PieceImages/White-Knight.png')
+        bKnight = pygame.image.load('Pieces/PieceImages/Black-Knight.png')
 
-        x,y = 50,50
+        x = 0
+        y = 0
 
         for row in range(8):
             for col in range(8):
@@ -122,17 +123,50 @@ class Board:
                 if square.isOccupied() == None:
                     continue
 
-                if square.isOccupied().getName() == 'pawn' and square.isOccupied().getColor == "white":
-                    screen.blit(wPawn, x , y)
+                print(square.isOccupied().getName())
 
+                if square.isOccupied().getName() == 'pawn' and square.isOccupied().getColor() == "white":
+                    screen.blit(wPawn, (x ,y))
+
+                elif square.isOccupied().getName() == 'pawn' and square.isOccupied().getColor() == "black":
+                    screen.blit(bPawn, (x ,y))
+
+                elif square.isOccupied().getName() == 'rook' and square.isOccupied().getColor() == "white":
+                    screen.blit(wRook, (x ,y))
+
+                elif square.isOccupied().getName() == 'rook' and square.isOccupied().getColor() == "black":
+                    screen.blit(bRook, (x ,y))
+
+                elif square.isOccupied().getName() == 'knight' and square.isOccupied().getColor() == "white":
+                    screen.blit(wKnight, (x, y))
+
+                elif square.isOccupied().getName() == 'knight' and square.isOccupied().getColor() == "black":
+                    screen.blit(bKnight, (x, y))
+
+                elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "white":
+                    screen.blit(wBishop, (x, y))
+
+                elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "black":
+                    screen.blit(bBishop, (x, y))
+
+                elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "white":
+                    screen.blit(wQueen, (x, y))
+
+                elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "black":
+                    screen.blit(bQueen, (x, y))
+
+                elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "white":
+                    screen.blit(wKing, (x, y))
+
+                elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "black":
+                    screen.blit(bKing, (x, y))
+
+
+                #Updates the x-axis location
                 x = x + 100
+            #updates the y-axis location and sets x back to 0
             x = 0
             y = y + 100
-
-
-
-
-
 
 
     def getBoard(self):
@@ -143,19 +177,21 @@ class Board:
         SCREEN_WIDTH = 800
         SCREEN_HEIGHT = 800
 
-        self.drawPieces(screen)
-
         SQUARE_SIZE = 100
 
-        WHITE = (255, 230, 153)
-        BLACK = (128, 64, 0)
+        WHITE = (176,196,222)
+        BLACK = (65,105,225)
 
         screen.fill(WHITE)
 
         for row in range(8):
             for col in range(row % 2, 8, 2):
                 pygame.draw.rect(screen, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            pygame.display.flip()
+
+
+        self.drawPieces(screen)
+
+        pygame.display.flip()
 
 
 
