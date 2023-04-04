@@ -96,8 +96,6 @@ class Board:
     
     def chessPositionToXY(self, coordinates):
         (x,y) = coordinates
-        
-        
         return ((ord(x) - 96) * 100) - 100, (y * 100)-100
 
     def drawPieces(self, screen):
