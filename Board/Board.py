@@ -93,6 +93,12 @@ class Board:
                 "h": Square(Rook('h', 8, "black"), "black"),
             },
         }
+    
+    def chessPositionToXY(self, coordinates):
+        (x,y) = coordinates
+        
+        
+        return ((ord(x) - 96) * 100) - 100, (y * 100)-100
 
     def drawPieces(self, screen):
         wPawn = pygame.image.load('Pieces/PieceImages/White-Pawn.png')
@@ -113,9 +119,6 @@ class Board:
         wKnight = pygame.image.load('Pieces/PieceImages/White-Knight.png')
         bKnight = pygame.image.load('Pieces/PieceImages/Black-Knight.png')
 
-        x = 0
-        y = 0
-
         for row in range(8):
             for col in range(8):
                 square = list(self.board[row+1].values())[col]
@@ -123,50 +126,44 @@ class Board:
                 if square.isOccupied() == None:
                     continue
 
-                print(square.isOccupied().getName())
+                piece = square.isOccupied()
 
-                if square.isOccupied().getName() == 'pawn' and square.isOccupied().getColor() == "white":
-                    screen.blit(wPawn, (x ,y))
+                if piece.getName() == 'pawn' and piece.getColor() == "white":
+                    screen.blit(wPawn, self.chessPositionToXY(piece.getPosition()))
 
-                elif square.isOccupied().getName() == 'pawn' and square.isOccupied().getColor() == "black":
-                    screen.blit(bPawn, (x ,y))
+                elif piece.getName() == 'pawn' and piece.getColor() == "black":
+                    screen.blit(bPawn, self.chessPositionToXY(piece.getPosition()))
 
-                elif square.isOccupied().getName() == 'rook' and square.isOccupied().getColor() == "white":
-                    screen.blit(wRook, (x ,y))
+                elif piece.getName() == 'rook' and piece.getColor() == "white":
+                    screen.blit(wRook, self.chessPositionToXY(piece.getPosition()))
 
-                elif square.isOccupied().getName() == 'rook' and square.isOccupied().getColor() == "black":
-                    screen.blit(bRook, (x ,y))
+                elif piece.getName() == 'rook' and piece.getColor() == "black":
+                    screen.blit(bRook, self.chessPositionToXY(piece.getPosition()))
 
-                elif square.isOccupied().getName() == 'knight' and square.isOccupied().getColor() == "white":
-                    screen.blit(wKnight, (x, y))
+                elif piece.getName() == 'knight' and piece.getColor() == "white":
+                    screen.blit(wKnight, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'knight' and square.isOccupied().getColor() == "black":
-                    screen.blit(bKnight, (x, y))
+                    screen.blit(bKnight, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "white":
-                    screen.blit(wBishop, (x, y))
+                    screen.blit(wBishop, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "black":
-                    screen.blit(bBishop, (x, y))
+                    screen.blit(bBishop, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "white":
-                    screen.blit(wQueen, (x, y))
+                    screen.blit(wQueen, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "black":
-                    screen.blit(bQueen, (x, y))
+                    screen.blit(bQueen, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "white":
-                    screen.blit(wKing, (x, y))
+                    screen.blit(wKing, self.chessPositionToXY(piece.getPosition()))
 
                 elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "black":
-                    screen.blit(bKing, (x, y))
+                    screen.blit(bKing, self.chessPositionToXY(piece.getPosition()))
 
-
-                #Updates the x-axis location
-                x = x + 100
-            #updates the y-axis location and sets x back to 0
-            x = 0
-            y = y + 100
 
 
     def getBoard(self):
