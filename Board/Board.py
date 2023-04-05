@@ -98,7 +98,34 @@ class Board:
         (x,y) = coordinates
         return ((ord(x) - 96) * 100) - 100, (y * 100)-100
 
+    def convertChessToXY(x,y):
+
+        SCREEN_WIDTH = 800
+        SCREEN_HEIGHT = 800
+
+        return SCREEN_WIDTH/ (ord(x) - 96), SCREEN_HEIGHT/ y
+
+    
     def drawPieces(self, screen):
+
+        wPawns = pieces["wPawn"]
+        bPawns = pieces["bPawn"]
+
+        wRooks = pieces['wRook']
+        bRooks = pieces['bRook']
+
+        wBishops = pieces['wBishop']
+        bBishops = pieces['bBishop']
+
+        wKnights = pieces['wKnight']
+        bKnights = pieces['bKnight']
+
+        wQueens = pieces['wQueen']
+        bQueens = pieces['bQueen']
+
+        wKings = pieces['wKing']
+        bKings = pieces['bKing']
+
         wPawn = pygame.image.load('Pieces/PieceImages/White-Pawn.png')
         bPawn = pygame.image.load('Pieces/PieceImages/Black-Pawn.png')
 
@@ -184,7 +211,7 @@ class Board:
                 pygame.draw.rect(screen, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
 
-        self.drawPieces(screen)
+        self.drawPieces(screen=screen)
 
         pygame.display.flip()
 

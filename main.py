@@ -15,8 +15,13 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 board.drawBoard(screen)
 
-while True:
-    for events in pygame.event:
-        # Something
+dragging = False
 
+while True:
     pygame.display.flip()
+
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print("mouse clicked")
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print("Mouse released")
