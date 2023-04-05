@@ -108,24 +108,6 @@ class Board:
     
     def drawPieces(self, screen):
 
-        wPawns = pieces["wPawn"]
-        bPawns = pieces["bPawn"]
-
-        wRooks = pieces['wRook']
-        bRooks = pieces['bRook']
-
-        wBishops = pieces['wBishop']
-        bBishops = pieces['bBishop']
-
-        wKnights = pieces['wKnight']
-        bKnights = pieces['bKnight']
-
-        wQueens = pieces['wQueen']
-        bQueens = pieces['bQueen']
-
-        wKings = pieces['wKing']
-        bKings = pieces['bKing']
-
         wPawn = pygame.image.load('Pieces/PieceImages/White-Pawn.png')
         bPawn = pygame.image.load('Pieces/PieceImages/Black-Pawn.png')
 
