@@ -95,15 +95,12 @@ class Board:
         }
     
     def chessPositionToXY(self, coordinates):
-        (x,y) = coordinates
-        return ((ord(x) - 96) * 100) - 100, (y * 100)-100
+        x, y = coordinates
+        return ((ord(x) - 96) * 100) - 100 , 700 - ((y * 100)-100)
 
-    def convertChessToXY(x,y):
-
-        SCREEN_WIDTH = 800
-        SCREEN_HEIGHT = 800
-
-        return SCREEN_WIDTH/ (ord(x) - 96), SCREEN_HEIGHT/ y
+    def xyToChess(self, coordinates):
+        x, y = coordinates
+        return chr(int(((x + 100) / 100) + 96)), 9 - int((y+100) / 100)
 
     
     def drawPieces(self, screen):

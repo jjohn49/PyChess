@@ -18,3 +18,6 @@ class Piece:
 
     def getColor(self):
         return self.color
+
+    def __str__(self) -> str:
+        return "name: " + self.name + "\ncolor: " + self.color + "\nAt position " + self.x + str(self.y)
