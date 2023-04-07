@@ -7,12 +7,13 @@ from Pieces.Rook import Rook
 from Pieces.Knight import Knight
 import pygame
 
+
 class Board:
-    #Starting Board
+    # Starting Board
     def __init__(self):
 
         self.board = {
-            1:{
+            1: {
                 "a": Square(Rook('a', 1, "white"), "black"),
                 "b": Square(Knight('b', 1, "white"), "white"),
                 "c": Square(Bishop('c', 1, "white"), "black"),
@@ -22,7 +23,7 @@ class Board:
                 "g": Square(Knight('g', 1, "white"), "black"),
                 "h": Square(Rook('h', 1, "white"), "white"),
             },
-            2:{
+            2: {
                 "a": Square(Pawn('a', 2, "white"), "white"),
                 "b": Square(Pawn('b', 2, "white"), "black"),
                 "c": Square(Pawn('c', 2, "white"), "white"),
@@ -32,7 +33,7 @@ class Board:
                 "g": Square(Pawn('g', 2, "white"), "white"),
                 "h": Square(Pawn('h', 2, "white"), "black"),
             },
-            3:{
+            3: {
                 "a": Square(None, "black"),
                 "b": Square(None, "white"),
                 "c": Square(None, "black"),
@@ -42,7 +43,7 @@ class Board:
                 "g": Square(None, "black"),
                 "h": Square(None, "white"),
             },
-            4:{
+            4: {
                 "a": Square(None, "white"),
                 "b": Square(None, "black"),
                 "c": Square(None, "white"),
@@ -52,7 +53,7 @@ class Board:
                 "g": Square(None, "white"),
                 "h": Square(None, "black"),
             },
-            5:{
+            5: {
                 "a": Square(None, "black"),
                 "b": Square(None, "white"),
                 "c": Square(None, "black"),
@@ -62,7 +63,7 @@ class Board:
                 "g": Square(None, "black"),
                 "h": Square(None, "white"),
             },
-            6:{
+            6: {
                 "a": Square(None, "white"),
                 "b": Square(None, "black"),
                 "c": Square(None, "white"),
@@ -72,7 +73,7 @@ class Board:
                 "g": Square(None, "white"),
                 "h": Square(None, "black"),
             },
-            7:{
+            7: {
                 "a": Square(Pawn('a', 7, "black"), "black"),
                 "b": Square(Pawn('b', 7, "black"), "white"),
                 "c": Square(Pawn('c', 7, "black"), "black"),
@@ -82,7 +83,7 @@ class Board:
                 "g": Square(Pawn('g', 7, "black"), "black"),
                 "h": Square(Pawn('h', 7, "black"), "white"),
             },
-            8:{
+            8: {
                 "a": Square(Rook('a', 8, "black"), "white"),
                 "b": Square(Knight('b', 8, "black"), "black"),
                 "c": Square(Bishop('c', 8, "black"), "white"),
@@ -93,18 +94,16 @@ class Board:
                 "h": Square(Rook('h', 8, "black"), "black"),
             },
         }
-    
+
     def chessPositionToXY(self, coordinates):
         x, y = coordinates
-        return ((ord(x) - 96) * 100) - 100 , 700 - ((y * 100)-100)
+        return ((ord(x) - 96) * 100) - 100, 700 - ((y * 100)-100)
 
     def xyToChess(self, coordinates):
         x, y = coordinates
         return chr(int(((x + 100) / 100) + 96)), 9 - int((y+100) / 100)
 
-    
-    def drawPieces(self, screen):
-
+    def drawPiece(self, screen, piece, position):
         wPawn = pygame.image.load('Pieces/PieceImages/White-Pawn.png')
         bPawn = pygame.image.load('Pieces/PieceImages/Black-Pawn.png')
 
@@ -123,6 +122,47 @@ class Board:
         wKnight = pygame.image.load('Pieces/PieceImages/White-Knight.png')
         bKnight = pygame.image.load('Pieces/PieceImages/Black-Knight.png')
 
+        if piece.getName() == 'pawn' and piece.getColor() == "white":
+            screen.blit(wPawn, position)
+
+        elif piece.getName() == 'pawn' and piece.getColor() == "black":
+            screen.blit(bPawn, position)
+
+        elif piece.getName() == 'rook' and piece.getColor() == "white":
+            screen.blit(wRook, position)
+
+        elif piece.getName() == 'rook' and piece.getColor() == "black":
+            screen.blit(bRook, position)
+
+        elif piece.getName() == 'knight' and piece.getColor() == "white":
+            screen.blit(wKnight, position)
+
+        elif piece.getName() == 'knight' and piece.getColor() == "black":
+            screen.blit(bKnight, position)
+
+        elif piece.getName() == 'bishop' and piece.getColor() == "white":
+            screen.blit(wBishop, position)
+
+        elif piece.getName() == 'bishop' and piece.getColor() == "black":
+            screen.blit(bBishop, position)
+
+        elif piece.getName() == 'queen' and piece.getColor() == "white":
+            screen.blit(wQueen, position)
+
+        elif piece.getName() == 'queen' and piece.getColor() == "black":
+            screen.blit(bQueen, position)
+
+        elif piece.getName() == 'king' and piece.getColor() == "white":
+            screen.blit(wKing, position)
+
+        elif piece.getName() == 'king' and piece.getColor() == "black":
+            screen.blit(bKing, position)
+
+    def drawPieces(self, screen, dragging, pieceMoving, position):
+
+        if dragging:
+            self.drawPiece(screen, pieceMoving, position)
+
         for row in range(8):
             for col in range(8):
                 square = list(self.board[row+1].values())[col]
@@ -132,48 +172,16 @@ class Board:
 
                 piece = square.isOccupied()
 
-                if piece.getName() == 'pawn' and piece.getColor() == "white":
-                    screen.blit(wPawn, self.chessPositionToXY(piece.getPosition()))
+                self.drawPiece(screen, piece, self.chessPositionToXY(piece.getPosition()))
 
-                elif piece.getName() == 'pawn' and piece.getColor() == "black":
-                    screen.blit(bPawn, self.chessPositionToXY(piece.getPosition()))
-
-                elif piece.getName() == 'rook' and piece.getColor() == "white":
-                    screen.blit(wRook, self.chessPositionToXY(piece.getPosition()))
-
-                elif piece.getName() == 'rook' and piece.getColor() == "black":
-                    screen.blit(bRook, self.chessPositionToXY(piece.getPosition()))
-
-                elif piece.getName() == 'knight' and piece.getColor() == "white":
-                    screen.blit(wKnight, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'knight' and square.isOccupied().getColor() == "black":
-                    screen.blit(bKnight, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "white":
-                    screen.blit(wBishop, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'bishop' and square.isOccupied().getColor() == "black":
-                    screen.blit(bBishop, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "white":
-                    screen.blit(wQueen, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'queen' and square.isOccupied().getColor() == "black":
-                    screen.blit(bQueen, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "white":
-                    screen.blit(wKing, self.chessPositionToXY(piece.getPosition()))
-
-                elif square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == "black":
-                    screen.blit(bKing, self.chessPositionToXY(piece.getPosition()))
+                
 
 
 
     def getBoard(self):
         return self.board
 
-    def drawBoard(self, screen):
+    def drawBoard(self, screen, dragging, pieceMoving, position):
         # Define constants for the screen width and height
         SCREEN_WIDTH = 800
         SCREEN_HEIGHT = 800
@@ -190,7 +198,7 @@ class Board:
                 pygame.draw.rect(screen, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
 
-        self.drawPieces(screen=screen)
+        self.drawPieces(screen, dragging, pieceMoving, position)
 
         pygame.display.flip()
 

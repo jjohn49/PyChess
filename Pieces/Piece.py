@@ -21,3 +21,7 @@ class Piece:
 
     def __str__(self) -> str:
         return "name: " + self.name + "\ncolor: " + self.color + "\nAt position " + self.x + str(self.y)
+
+    def setPosition(self, row, col):
+        self.x = row
+        self.y = col

@@ -2,6 +2,8 @@ import pygame
 from Board.Board import Board
 import math
 
+from Board.Square import Square
+
 pygame.init()
 screen = pygame.display.set_mode([500, 500])
 
@@ -14,10 +16,38 @@ SCREEN_HEIGHT = 800
 # The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-board.drawBoard(screen)
-
+pieceMoving = None
+mouseX , mouseY = 0,0
 dragging = False
-pieceToMove = None
+
+board.drawBoard(screen, dragging, pieceMoving, (mouseX, mouseY))
+
+def findChessSquareFromMouse(mouse):
+    x, y = mouse
+
+    x = int(math.floor(x/100) * 100)
+    y = int(math.floor(y/100) * 100)
+
+    row, col = board.xyToChess((x,y))
+
+    return row, col
+
+
+def getPiece(eventPosition):
+
+    pieceToMove = None
+
+    row, col = findChessSquareFromMouse(eventPosition)
+
+    if board.board[col][row].isOccupied() != None:
+        pieceToMove = board.board[col][row].isOccupied()
+        #deletes the piece from the board 
+        board.board[col][row] = Square(None, board.board[col][row].color)
+
+    return pieceToMove
+    
+#Placeholder var for moving piece
+
 
 while True:
     pygame.display.flip()
@@ -25,35 +55,21 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
 
-            '''
-            for row in board.board.values():
-                for square in row.values():
-                    piece = square.isOccupied()
-                    print(piece)
-                    if piece == None:
-                        continue
+            pieceMoving = getPiece(eventPosition=event.pos)
+            if pieceMoving != None:
+                dragging = True
 
-                    print("Pieces coordinates = " + str(board.chessPositionToXY(piece.getPosition())))
-                    print("Mouse clicked at " + str(event.pos))
-
-                    if board.chessPositionToXY(piece.getPosition()) == event.pos:
-                        print("Clicked on " + piece)
-                        dragging = True'''
-
-            clickX, clickY = event.pos
-
-            clickX = int(math.floor(clickX/100) * 100)
-            clickY = int(math.floor(clickY/100) * 100)
-
-            row, col = board.xyToChess((clickX,clickY))
-
-            if board.board[col][row].isOccupied() != None:
-                pieceToMove = 
-
-
-
-
-                    
-
+        elif event.type == pygame.MOUSEMOTION:
+            if dragging:
+                mouseX, mouseY = event.pos
+                
         elif event.type == pygame.MOUSEBUTTONUP:
             dragging = False
+            row, col = findChessSquareFromMouse(event.pos)
+            pieceMoving.setPosition(row, col)
+            board.board[col][row] = Square(pieceMoving, board.board[col][row].color)
+            pieceMoving = None
+
+
+
+        board.drawBoard(screen, dragging, pieceMoving, (mouseX, mouseY))
