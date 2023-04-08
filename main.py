@@ -50,14 +50,14 @@ def getPiece(eventPosition):
 
 
 while True:
-    pygame.display.flip()
+    
 
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
-
             pieceMoving = getPiece(eventPosition=event.pos)
             if pieceMoving != None:
                 dragging = True
+                mouseX, mouseY = event.pos
 
         elif event.type == pygame.MOUSEMOTION:
             if dragging:
@@ -66,10 +66,15 @@ while True:
         elif event.type == pygame.MOUSEBUTTONUP:
             dragging = False
             row, col = findChessSquareFromMouse(event.pos)
-            pieceMoving.setPosition(row, col)
-            board.board[col][row] = Square(pieceMoving, board.board[col][row].color)
+            if pieceMoving.getMoves(board.board).__contains__((row, col)):
+                pieceMoving.setPosition(row, col)
+                board.board[col][row].setOccupied(pieceMoving)
+            else:
+                row, col = pieceMoving.getPosition()
+                board.board[col][row].setOccupied(pieceMoving)
             pieceMoving = None
 
 
 
         board.drawBoard(screen, dragging, pieceMoving, (mouseX, mouseY))
+        pygame.display.flip()
