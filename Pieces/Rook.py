@@ -1,3 +1,4 @@
+from turtle import right
 from Pieces.Piece import Piece
 
 
@@ -7,33 +8,88 @@ class Rook(Piece):
         Piece.__init__(self=self, name="rook", x=x , y=y, color=color )
 
     def getMoves(self, board):
-        moves = []
-        for col in board:
-            if col == self.y:
-                continue 
+        #print(self.getDownMoves(board) + self.getUpMoves(board) + self.getLeftMoves(board) + self.getRightMoves(board))
+        return self.getDownMoves(board) + self.getUpMoves(board) + self.getLeftMoves(board) + self.getRightMoves(board)
 
-            if board[col][self.x].isOccupied() != None:
-                print(col)
-                print(self.x)
-                if board[col][self.x].isOccupied().getColor() != self.color:
-                    moves.append((self.x,col))
+    def getDownMoves(self,board):
+        moves = []
+        col = self.y
+        while(col >= 1):
+            if col == self.y:
+                col = col - 1
+                continue
+
+            square = board[col][self.x]
+
+            if square.isOccupied() != None:
+                if square.isOccupied().getColor() != self.color:
+                    moves.append((self.x, col))
                 break
 
             moves.append((self.x, col))
+            col = col - 1
 
-        for row in ['a','b','c','d','e','f','g','h']:
+        return moves
+
+    def getUpMoves(self,board):
+        moves = []
+        col = self.y
+        while(col <= 8):
+            if col == self.y:
+                col = col + 1
+                continue
+
+            square = board[col][self.x]
+
+            if square.isOccupied() != None:
+                if square.isOccupied().getColor() != self.color:
+                    moves.append((self.x, col))
+                break
+
+            moves.append((self.x, col))
+            col = col + 1
+
+        return moves
+
+    def getLeftMoves(self,board):
+        moves=[]
+        row = self.x
+        while(row != chr(ord('a') - 1)):
+            
             if row == self.x:
-                continue 
+                row = chr(ord(row) - 1)
+                continue
 
-            if board[self.y][row].isOccupied() != None:
-                if board[self.y][row].isOccupied().getColor() != self.color:
-                    moves.append((row,self.y))
+            square = board[self.y][row]
+
+            if square.isOccupied() != None:
+                if square.isOccupied().getColor() != self.color:
+                    moves.append((row, self.y))
                 break
 
             moves.append((row, self.y))
+            row = chr(ord(row) - 1)
 
-        print(moves)
+        return moves
 
+    def getRightMoves(self,board):
+        moves = []
+        row = self.x
+        while(row != 'i'):
+
+            if row == self.x:
+                row = chr(ord(row) + 1)
+                continue
+
+            square = board[self.y][row]
+
+            if square.isOccupied() != None:
+                if square.isOccupied().getColor() != self.color:
+                    moves.append((row, self.y))
+                break
+
+            moves.append((row, self.y))
+            row = chr(ord(row) + 1)
         return moves
 
 
