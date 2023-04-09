@@ -25,3 +25,7 @@ class Piece:
     def setPosition(self, row, col):
         self.x = row
         self.y = col
+
+    #placeholder function
+    def getMoves(self, board):
+        return []

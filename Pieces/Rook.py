@@ -1,5 +1,5 @@
-from turtle import right
 from Pieces.Piece import Piece
+from Board.Square import Square
 
 
 class Rook(Piece):
