@@ -202,5 +202,44 @@ class Board:
 
         pygame.display.flip()
 
+    def getAllOpposingPlayersMoves(self, playerColor):
+        kingsPosition = None
+        opposingMoves = []
+
+        for col in self.board.values():
+            for square in col.values():
+                if square.isOccupied() != None and square.isOccupied().getColor() != playerColor:
+                    opposingPiece = square.isOccupied()
+                    opposingMoves = opposingMoves + opposingPiece.getMoves()
+
+                elif square.isOccupied().name == 'king':
+                    kingsPosition = square.isOccupied().getPosition()
+
+        return opposingMoves, kingsPosition
+
+    def isCheck(self, playerColor):
+        opposingMoves, kingsPos = self.getAllOpposingPlayersMoves(playerColor)
+
+        return kingsPos in opposingMoves
+
+    def getAllMovesForPlayer(self, playerColor):
+        moves = []
+        for col in self.board.values():
+            for square in col.values():
+                if square.isOccupied() != None and square.isOccupied().getColor() == playerColor:
+                    piece = square.isOccupied()
+                    moves.append({
+                        "piece": piece,
+                        "moves":piece.getMoves()
+                    })
+
+        return moves
+
+    
+
+            
+        
+
+        
 
 
