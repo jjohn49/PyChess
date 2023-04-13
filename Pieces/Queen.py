@@ -9,4 +9,4 @@ class Queen(Piece):
         Piece.__init__(self=self, name="queen", x=x , y=y, color=color )
 
     def getMoves(self, board):
-        return Rook.getMoves(board) + Bishop.getMoves(board)
+        return Rook.getMoves(self, board) + Bishop.getMoves(self, board)
