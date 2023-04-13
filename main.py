@@ -55,7 +55,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             pieceMoving = getPiece(eventPosition=event.pos)
             if pieceMoving != None:
-                print(pieceMoving)
+                #print(pieceMoving)
                 dragging = True
                 mouseX, mouseY = event.pos
 

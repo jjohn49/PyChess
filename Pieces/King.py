@@ -16,7 +16,7 @@ class King(Piece):
             if self.y - 1 > 1 and (board[self.y-1][x].isOccupied() == None or board[self.y-1][x].isOccupied().getColor() != self.color):
                 moves.append((x,self.y -1))
 
-            if self.y + 1 > 1 and (board[self.y+1][x].isOccupied() == None or board[self.y+1][x].isOccupied().getColor() != self.color):
+            if self.y + 1 < 9 and (board[self.y+1][x].isOccupied() == None or board[self.y+1][x].isOccupied().getColor() != self.color):
                 moves.append((x,self.y + 1))
 
             if (board[self.y][x].isOccupied() == None or board[self.y][x].isOccupied().getColor() != self.color):

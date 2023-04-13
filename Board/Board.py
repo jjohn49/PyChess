@@ -202,7 +202,7 @@ class Board:
 
         pygame.display.flip()
 
-    def getAllOpposingPlayersMoves(self, playerColor):
+    '''def getAllOpposingPlayersMoves(self, playerColor):
         kingsPosition = None
         opposingMoves = []
 
@@ -233,7 +233,7 @@ class Board:
                         "moves":piece.getMoves()
                     })
 
-        return moves
+        return moves'''
 
     
 
