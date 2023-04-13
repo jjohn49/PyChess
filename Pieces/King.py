@@ -21,6 +21,7 @@ class King(Piece):
 
             if (board[self.y][x].isOccupied() == None or board[self.y][x].isOccupied().getColor() != self.color):
                 moves.append((x,self.y))
+                
 
         #all moves to the left
         if chr(ord(self.x) - 1) != chr(ord('a') - 1):
