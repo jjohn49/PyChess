@@ -161,7 +161,9 @@ class Board:
     def drawPieces(self, screen, dragging, pieceMoving, position):
 
         if dragging:
+            self.drawMoves(screen, pieceMoving.getMoves(self.board))
             self.drawPiece(screen, pieceMoving, position)
+            
 
         for row in range(8):
             for col in range(8):
@@ -175,11 +177,14 @@ class Board:
                 self.drawPiece(screen, piece, self.chessPositionToXY(piece.getPosition()))
 
                 
-
-
-
     def getBoard(self):
         return self.board
+
+    def drawMoves(self, screen, moves):
+        GRAY = (  128,   128, 128)
+        for move in moves:
+            x, y = self.chessPositionToXY(move)
+            pygame.draw.circle(screen, GRAY, (x + 50, y + 50), 35)
 
     def drawBoard(self, screen, dragging, pieceMoving, position):
         # Define constants for the screen width and height
@@ -202,38 +207,6 @@ class Board:
 
         pygame.display.flip()
 
-    '''def getAllOpposingPlayersMoves(self, playerColor):
-        kingsPosition = None
-        opposingMoves = []
-
-        for col in self.board.values():
-            for square in col.values():
-                if square.isOccupied() != None and square.isOccupied().getColor() != playerColor:
-                    opposingPiece = square.isOccupied()
-                    opposingMoves = opposingMoves + opposingPiece.getMoves()
-
-                elif square.isOccupied().name == 'king':
-                    kingsPosition = square.isOccupied().getPosition()
-
-        return opposingMoves, kingsPosition
-
-    def isCheck(self, playerColor):
-        opposingMoves, kingsPos = self.getAllOpposingPlayersMoves(playerColor)
-
-        return kingsPos in opposingMoves
-
-    def getAllMovesForPlayer(self, playerColor):
-        moves = []
-        for col in self.board.values():
-            for square in col.values():
-                if square.isOccupied() != None and square.isOccupied().getColor() == playerColor:
-                    piece = square.isOccupied()
-                    moves.append({
-                        "piece": piece,
-                        "moves":piece.getMoves()
-                    })
-
-        return moves'''
 
     
 
