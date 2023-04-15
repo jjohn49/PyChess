@@ -207,6 +207,41 @@ class Board:
 
         pygame.display.flip()
 
+    def getAllMovesForPlayer(self, color):
+        moves = []
+        for col in self.board.values():
+            for square in col.values():
+                if square.isOccupied() != None and square.isOccupied().getColor() == color:
+                    moves = moves + square.isOccupied().getMoves()
+
+        return moves 
+
+    def getKingsPositionForPlayer(self):
+        for col in self.board.values():
+            for square in col.values():
+                if square.isOccupied() != None and square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == color:
+                    return square.isOccupied().getPosition()
+
+        return None 
+
+
+    def isWhiteInCheck(self):
+        blackMoves = self.getAllMovesForPlayer("black")
+        whiteKingPos = self.getKingsPositionForPlayer("white")
+
+        return whiteKingPos in blackMoves
+
+    def isBlackInCheck(self):
+        whiteMoves = self.getAllMovesForPlayer("white")
+        blackKingPos = self.getKingsPositionForPlayer("black")
+
+        return blackKingPos in whiteMoves
+
+    def isCheck(self):
+        return self.isWhiteInCheck() or self.isBlackInCheck()
+
+
+
 
     
 
