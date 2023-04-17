@@ -13,13 +13,13 @@ class King(Piece):
         if chr(ord(self.x) + 1) != 'i':
             x = chr(ord(self.x) + 1)
             
-            if self.y - 1 > 1 and (board[self.y-1][x].isOccupied() == None or board[self.y-1][x].isOccupied().getColor() != self.color):
+            if self.y - 1 > 1 and (board[self.y-1][x] == None or board[self.y-1][x].getColor() != self.color):
                 moves.append((x,self.y -1))
 
-            if self.y + 1 < 9 and (board[self.y+1][x].isOccupied() == None or board[self.y+1][x].isOccupied().getColor() != self.color):
+            if self.y + 1 < 9 and (board[self.y+1][x] == None or board[self.y+1][x].getColor() != self.color):
                 moves.append((x,self.y + 1))
 
-            if (board[self.y][x].isOccupied() == None or board[self.y][x].isOccupied().getColor() != self.color):
+            if (board[self.y][x] == None or board[self.y][x].getColor() != self.color):
                 moves.append((x,self.y))
                 
 
@@ -27,21 +27,21 @@ class King(Piece):
         if chr(ord(self.x) - 1) != chr(ord('a') - 1):
             x = chr(ord(self.x) - 1)
             
-            if self.y - 1 > 0 and (board[self.y-1][x].isOccupied() == None or board[self.y-1][x].isOccupied().getColor() != self.color):
+            if self.y - 1 > 0 and (board[self.y-1][x] == None or board[self.y-1][x].getColor() != self.color):
                 moves.append((x,self.y -1))
 
-            if self.y + 1 < 9 and (board[self.y+1][x].isOccupied() == None or board[self.y+1][x].isOccupied().getColor() != self.color):
+            if self.y + 1 < 9 and (board[self.y+1][x] == None or board[self.y+1][x].getColor() != self.color):
                 moves.append((x,self.y + 1))
 
-            if (board[self.y][x].isOccupied() == None or board[self.y][x].isOccupied().getColor() != self.color):
+            if (board[self.y][x] == None or board[self.y][x].getColor() != self.color):
                 moves.append((x,self.y))
 
         #move 1 up 
-        if self.y + 1 < 9 and (board[self.y+1][self.x].isOccupied() == None or board[self.y+1][self.x].isOccupied().getColor() != self.color):
+        if self.y + 1 < 9 and (board[self.y+1][self.x] == None or board[self.y+1][self.x].getColor() != self.color):
                 moves.append((self.x,self.y + 1))
 
         #move 1 down
-        if self.y - 1 > 0 and (board[self.y-1][self.x].isOccupied() == None or board[self.y-1][self.x].isOccupied().getColor() != self.color):
+        if self.y - 1 > 0 and (board[self.y-1][self.x] == None or board[self.y-1][self.x].getColor() != self.color):
                 moves.append((self.x,self.y - 1))
 
 

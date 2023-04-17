@@ -1,5 +1,4 @@
 from Pieces.Piece import Piece
-from Board.Square import Square
 
 
 class Bishop(Piece):
@@ -21,13 +20,13 @@ class Bishop(Piece):
 
                 square = board[y][x]
 
-                if square.isOccupied() == None:
+                if square == None:
                     moves.append((x,y))
                     x = chr(ord(x) + 1)
                     y = y + 1
                     continue
 
-                piece = square.isOccupied()
+                piece = square
 
                 if piece.getColor() != self.color:
                     moves.append((x,y))
@@ -48,13 +47,13 @@ class Bishop(Piece):
 
                 square = board[y][x]
 
-                if square.isOccupied() == None:
+                if square == None:
                     moves.append((x,y))
                     x = chr(ord(x) - 1)
                     y = y + 1
                     continue
 
-                piece = square.isOccupied()
+                piece = square
 
                 if piece.getColor() != self.color:
                     moves.append((x,y))
@@ -77,13 +76,13 @@ class Bishop(Piece):
 
                 square = board[y][x]
 
-                if square.isOccupied() == None:
+                if square == None:
                     moves.append((x,y))
                     x = chr(ord(x) + 1)
                     y = y - 1
                     continue
 
-                piece = square.isOccupied()
+                piece = square
 
                 if piece.getColor() != self.color:
                     moves.append((x,y))
@@ -104,13 +103,13 @@ class Bishop(Piece):
 
                 square = board[y][x]
 
-                if square.isOccupied() == None:
+                if square == None:
                     moves.append((x,y))
                     x = chr(ord(x) - 1)
                     y = y - 1
                     continue
 
-                piece = square.isOccupied()
+                piece = square
 
                 if piece.getColor() != self.color:
                     moves.append((x,y))

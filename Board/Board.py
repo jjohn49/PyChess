@@ -1,4 +1,3 @@
-from Board.Square import Square
 from Pieces.Bishop import Bishop
 from Pieces.Pawn import Pawn
 from Pieces.King import King
@@ -14,84 +13,84 @@ class Board:
 
         self.board = {
             1: {
-                "a": Square(Rook('a', 1, "white"), "black"),
-                "b": Square(Knight('b', 1, "white"), "white"),
-                "c": Square(Bishop('c', 1, "white"), "black"),
-                "d": Square(Queen('d', 1, "white"), "white"),
-                "e": Square(King('e', 1, "white"), "black"),
-                "f": Square(Bishop('f', 1, "white"), "white"),
-                "g": Square(Knight('g', 1, "white"), "black"),
-                "h": Square(Rook('h', 1, "white"), "white"),
+                "a": Rook('a', 1, "white"),
+                "b": Knight('b', 1, "white"),
+                "c": Bishop('c', 1, "white"),
+                "d": Queen('d', 1, "white"),
+                "e": King('e', 1, "white"),
+                "f": Bishop('f', 1, "white"),
+                "g": Knight('g', 1, "white"),
+                "h": Rook('h', 1, "white"),
             },
             2: {
-                "a": Square(Pawn('a', 2, "white"), "white"),
-                "b": Square(Pawn('b', 2, "white"), "black"),
-                "c": Square(Pawn('c', 2, "white"), "white"),
-                "d": Square(Pawn('d', 2, "white"), "black"),
-                "e": Square(Pawn('e', 2, "white"), "white"),
-                "f": Square(Pawn('f', 2, "white"), "black"),
-                "g": Square(Pawn('g', 2, "white"), "white"),
-                "h": Square(Pawn('h', 2, "white"), "black"),
+                "a": Pawn('a', 2, "white"),
+                "b": Pawn('b', 2, "white"),
+                "c": Pawn('c', 2, "white"),
+                "d": Pawn('d', 2, "white"),
+                "e": Pawn('e', 2, "white"),
+                "f": Pawn('f', 2, "white"),
+                "g": Pawn('g', 2, "white"),
+                "h": Pawn('h', 2, "white"),
             },
             3: {
-                "a": Square(None, "black"),
-                "b": Square(None, "white"),
-                "c": Square(None, "black"),
-                "d": Square(None, "white"),
-                "e": Square(None, "black"),
-                "f": Square(None, "white"),
-                "g": Square(None, "black"),
-                "h": Square(None, "white"),
+                "a": None,
+                "b": None,
+                "c": None,
+                "d": None,
+                "e": None,
+                "f": None,
+                "g": None,
+                "h": None,
             },
             4: {
-                "a": Square(None, "white"),
-                "b": Square(None, "black"),
-                "c": Square(None, "white"),
-                "d": Square(None, "black"),
-                "e": Square(None, "white"),
-                "f": Square(None, "black"),
-                "g": Square(None, "white"),
-                "h": Square(None, "black"),
+                "a": None,
+                "b": None,
+                "c": None,
+                "d": None,
+                "e": None,
+                "f": None,
+                "g": None,
+                "h": None,
             },
             5: {
-                "a": Square(None, "black"),
-                "b": Square(None, "white"),
-                "c": Square(None, "black"),
-                "d": Square(None, "white"),
-                "e": Square(None, "black"),
-                "f": Square(None, "white"),
-                "g": Square(None, "black"),
-                "h": Square(None, "white"),
+                "a": None,
+                "b": None,
+                "c": None,
+                "d": None,
+                "e": None,
+                "f": None,
+                "g": None,
+                "h": None,
             },
             6: {
-                "a": Square(None, "white"),
-                "b": Square(None, "black"),
-                "c": Square(None, "white"),
-                "d": Square(None, "black"),
-                "e": Square(None, "white"),
-                "f": Square(None, "black"),
-                "g": Square(None, "white"),
-                "h": Square(None, "black"),
+                "a": None,
+                "b": None,
+                "c": None,
+                "d": None,
+                "e": None,
+                "f": None,
+                "g": None,
+                "h": None,
             },
             7: {
-                "a": Square(Pawn('a', 7, "black"), "black"),
-                "b": Square(Pawn('b', 7, "black"), "white"),
-                "c": Square(Pawn('c', 7, "black"), "black"),
-                "d": Square(Pawn('d', 7, "black"), "white"),
-                "e": Square(Pawn('e', 7, "black"), "black"),
-                "f": Square(Pawn('f', 7, "black"), "white"),
-                "g": Square(Pawn('g', 7, "black"), "black"),
-                "h": Square(Pawn('h', 7, "black"), "white"),
+                "a": Pawn('a', 7, "black"),
+                "b": Pawn('b', 7, "black"),
+                "c": Pawn('c', 7, "black"),
+                "d": Pawn('d', 7, "black"),
+                "e": Pawn('e', 7, "black"),
+                "f": Pawn('f', 7, "black"),
+                "g": Pawn('g', 7, "black"),
+                "h": Pawn('h', 7, "black"),
             },
             8: {
-                "a": Square(Rook('a', 8, "black"), "white"),
-                "b": Square(Knight('b', 8, "black"), "black"),
-                "c": Square(Bishop('c', 8, "black"), "white"),
-                "d": Square(Queen('d', 8, "black"), "black"),
-                "e": Square(King('e', 8, "black"), "white"),
-                "f": Square(Bishop('f', 8, "black"), "black"),
-                "g": Square(Knight('g', 8, "black"), "white"),
-                "h": Square(Rook('h', 8, "black"), "black"),
+                "a": Rook('a', 8, "black"),
+                "b": Knight('b', 8, "black"),
+                "c": Bishop('c', 8, "black"),
+                "d": Queen('d', 8, "black"),
+                "e": King('e', 8, "black"),
+                "f": Bishop('f', 8, "black"),
+                "g": Knight('g', 8, "black"),
+                "h": Rook('h', 8, "black"),
             },
         }
 
@@ -169,14 +168,13 @@ class Board:
             for col in range(8):
                 square = list(self.board[row+1].values())[col]
 
-                if square.isOccupied() == None:
+                if square == None:
                     continue
 
-                piece = square.isOccupied()
+                piece = square
 
                 self.drawPiece(screen, piece, self.chessPositionToXY(piece.getPosition()))
-
-                
+       
     def getBoard(self):
         return self.board
 
@@ -191,7 +189,7 @@ class Board:
         SCREEN_WIDTH = 800
         SCREEN_HEIGHT = 800
 
-        SQUARE_SIZE = 100
+        _SIZE = 100
 
         WHITE = (176,196,222)
         BLACK = (65,105,225)
@@ -200,45 +198,64 @@ class Board:
 
         for row in range(8):
             for col in range(row % 2, 8, 2):
-                pygame.draw.rect(screen, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+                pygame.draw.rect(screen, BLACK, (row * _SIZE, col * _SIZE, _SIZE, _SIZE))
 
 
         self.drawPieces(screen, dragging, pieceMoving, position)
 
         pygame.display.flip()
 
+    #For the current board
     def getAllMovesForPlayer(self, color):
+        self.getAllMovesForPlayerWithBoard(color, self.board)
+
+    def getAllMovesForPlayerWithBoard(self, color, board):
         moves = []
-        for col in self.board.values():
-            for square in col.values():
-                if square.isOccupied() != None and square.isOccupied().getColor() == color:
-                    moves = moves + square.isOccupied().getMoves()
+        for col in board.values():
+            for piece in col.values():
+                if piece != None and piece.getColor() == color:
+                    moves = moves + piece.getMoves(board)
 
         return moves 
 
-    def getKingsPositionForPlayer(self):
-        for col in self.board.values():
-            for square in col.values():
-                if square.isOccupied() != None and square.isOccupied().getName() == 'king' and square.isOccupied().getColor() == color:
-                    return square.isOccupied().getPosition()
+    #For the current board
+    def getKingsPositionForPlayer(self, color):
+        self.getKingsPositionForPlayerWithBoard(color, self.board)
+
+    def getKingsPositionForPlayerWithBoard(self, color, board):
+        for col in board.values():
+            for piece in col.values():
+                if piece != None and piece.getName() == 'king' and piece.getColor() == color:
+                    return piece.getPosition()
 
         return None 
 
-
-    def isWhiteInCheck(self):
-        blackMoves = self.getAllMovesForPlayer("black")
-        whiteKingPos = self.getKingsPositionForPlayer("white")
+    def isWhiteInCheckWithBoard(self, board):
+        blackMoves = self.getAllMovesForPlayerWithBoard("black", board)
+        whiteKingPos = self.getKingsPositionForPlayerWithBoard("white", board)
 
         return whiteKingPos in blackMoves
 
-    def isBlackInCheck(self):
-        whiteMoves = self.getAllMovesForPlayer("white")
-        blackKingPos = self.getKingsPositionForPlayer("black")
+    #For the current board
+    def isWhiteInCheck(self):
+        return self.isWhiteInCheckWithBoard(self.board)
+
+    def isBlackInCheckWithBoard(self, board):
+        whiteMoves = self.getAllMovesForPlayerWithBoard("white", board)
+        blackKingPos = self.getKingsPositionForPlayerWithBoard("black", board)
 
         return blackKingPos in whiteMoves
 
+    #For the current board
+    def isBlackInCheck(self):
+        return self.isBlackInCheckWithBoard(self.board)
+
+    #For the current board
     def isCheck(self):
         return self.isWhiteInCheck() or self.isBlackInCheck()
+
+    def isCheckWithBoard(self, board):
+        return self.isWhiteInCheckWithBoard(board) or self.isBlackInCheckWithBoard(board)
 
 
 

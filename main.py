@@ -2,7 +2,6 @@ import pygame
 from Board.Board import Board
 import math
 
-from Board.Square import Square
 
 pygame.init()
 screen = pygame.display.set_mode([500, 500])
@@ -40,14 +39,21 @@ def getPiece(eventPosition):
 
     row, col = findChessSquareFromMouse(eventPosition)
 
-    if board.board[col][row].isOccupied() != None:
-        pieceToMove = board.board[col][row].isOccupied()
+    if board.board[col][row] != None:
+        pieceToMove = board.board[col][row]
         #deletes the piece from the board 
-        board.board[col][row] = Square(None, board.board[col][row].color)
+        board.board[col][row] = None
 
     return pieceToMove
     
 #Placeholder var for moving piece
+
+def doesMoveCreateCheck(newBoard, colorMoving):
+    if colorMoving == "white":
+        return board.isWhiteInCheckWithBoard(board=newBoard)
+    else:
+        return board.isBlackInCheckWithBoard(board=newBoard)
+    
 
 
 while True:
@@ -56,9 +62,10 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             pieceMoving = getPiece(eventPosition=event.pos)
             if pieceMoving != None:
-                #print(pieceMoving)
+                print(pieceMoving)
                 dragging = True
                 currentMoves = pieceMoving.getMoves(board.board)
+                print(currentMoves)
                 mouseX, mouseY = event.pos
 
         elif event.type == pygame.MOUSEMOTION:
@@ -68,13 +75,19 @@ while True:
         elif event.type == pygame.MOUSEBUTTONUP:
             dragging = False
             row, col = findChessSquareFromMouse(event.pos)
-            if currentMoves.__contains__((row, col)):
+
+            newBoard = board.board
+            newBoard[col][row] = pieceMoving
+
+            if currentMoves.__contains__((row, col)) and not doesMoveCreateCheck(newBoard, pieceMoving.getColor()):
                 pieceMoving.setPosition(row, col)
-                board.board[col][row].setOccupied(pieceMoving)
+                board.board[col][row] = pieceMoving
                 currentMoves = []
+                #print(board.isCheck())
             else:
+                newBoard = board.board
                 row, col = pieceMoving.getPosition()
-                board.board[col][row].setOccupied(pieceMoving)
+                board.board[col][row] = pieceMoving
                 currentMoves = []
             pieceMoving = None
 

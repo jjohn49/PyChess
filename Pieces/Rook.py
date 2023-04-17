@@ -1,5 +1,5 @@
 from Pieces.Piece import Piece
-from Board.Square import Square
+
 
 
 class Rook(Piece):
@@ -20,8 +20,8 @@ class Rook(Piece):
 
                 square = board[col][self.x]
 
-                if square.isOccupied() != None:
-                    if square.isOccupied().getColor() != self.color:
+                if square != None:
+                    if square.getColor() != self.color:
                         moves.append((self.x, col))
                     break
 
@@ -40,8 +40,8 @@ class Rook(Piece):
 
                 square = board[col][self.x]
 
-                if square.isOccupied() != None:
-                    if square.isOccupied().getColor() != self.color:
+                if square != None:
+                    if square.getColor() != self.color:
                         moves.append((self.x, col))
                     break
 
@@ -61,8 +61,8 @@ class Rook(Piece):
 
                 square = board[self.y][row]
 
-                if square.isOccupied() != None:
-                    if square.isOccupied().getColor() != self.color:
+                if square != None:
+                    if square.getColor() != self.color:
                         moves.append((row, self.y))
                     break
 
@@ -82,8 +82,8 @@ class Rook(Piece):
 
                 square = board[self.y][row]
 
-                if square.isOccupied() != None:
-                    if square.isOccupied().getColor() != self.color:
+                if square != None:
+                    if square.getColor() != self.color:
                         moves.append((row, self.y))
                     break
 
